@@ -7,7 +7,12 @@
             <el-avatar :icon="UserFilled" />
           </div>
           <el-menu>
-            <el-menu-item>Option 1</el-menu-item>
+            <el-menu-item>
+              <el-icon :size="size" :color="color">
+                <Edit />
+              </el-icon>
+              Option 1
+            </el-menu-item>
             <el-menu-item>Option 2</el-menu-item>
             <el-menu-item>Option 3</el-menu-item>
           </el-menu>
@@ -33,5 +38,6 @@ export default {
 .avator-area {
   padding: 20px;
   text-align: center;
+  border-right: solid 1px var(--el-menu-border-color);
 }
 </style>
