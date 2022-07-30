@@ -1,3 +1,6 @@
+<script setup>
+import { HomeFilled } from "@element-plus/icons-vue";
+</script>
 <template>
   <div class="container">
     <el-container>
@@ -8,9 +11,7 @@
           </div>
           <el-menu>
             <el-menu-item>
-              <el-icon>
-                <IconMenu />
-              </el-icon>
+              <el-icon><HomeFilled /></el-icon>
               Option 1
             </el-menu-item>
             <el-menu-item>Option 2</el-menu-item>
@@ -25,7 +26,6 @@
 
 <script>
 import { ref } from "vue";
-import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
 export default {
   name: "Home",
   components: {},
