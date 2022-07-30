@@ -8,8 +8,8 @@
           </div>
           <el-menu>
             <el-menu-item>
-              <el-icon :size="size" :color="color">
-                <Edit />
+              <el-icon>
+                <IconMenu />
               </el-icon>
               Option 1
             </el-menu-item>
