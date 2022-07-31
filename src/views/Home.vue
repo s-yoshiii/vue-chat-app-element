@@ -1,24 +1,26 @@
 <script setup>
-import { HomeFilled } from "@element-plus/icons-vue";
+import { HomeFilled, Right } from "@element-plus/icons-vue";
 </script>
 <template>
   <div class="container">
     <el-container>
-      <el-scrollbar height="100vh">
-        <el-aside>
-          <div class="avator-area">
-            <el-avatar :icon="UserFilled" />
-          </div>
-          <el-menu>
-            <el-menu-item>
-              <el-icon><HomeFilled /></el-icon>
-              Option 1
-            </el-menu-item>
-            <el-menu-item>Option 2</el-menu-item>
-            <el-menu-item>Option 3</el-menu-item>
-          </el-menu>
-        </el-aside>
-      </el-scrollbar>
+      <el-header>
+        <el-menu mode="horizontal" :ellipsis="false" @select="handleSelect">
+          <el-menu-item index="0">LOGO</el-menu-item>
+          <div class="flex-grow" />
+          <el-menu-item class="avator-area"
+            ><el-avatar :icon="UserFilled"
+          /></el-menu-item>
+          <el-menu-item>
+            <el-icon><HomeFilled /></el-icon>
+            Home
+          </el-menu-item>
+          <el-menu-item>
+            <el-icon><Right /></el-icon>
+            Logout
+          </el-menu-item>
+        </el-menu>
+      </el-header>
       <el-main>Main</el-main>
     </el-container>
   </div>
@@ -32,12 +34,17 @@ export default {
 };
 </script>
 <style scoped>
+.flex-grow {
+  flex-grow: 1;
+}
+.el-menu--horizontal {
+  align-items: center;
+}
 .el-container {
   min-height: 100vh;
 }
 .avator-area {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
-  border-right: solid 1px var(--el-menu-border-color);
 }
 </style>
