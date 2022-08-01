@@ -35,24 +35,36 @@ import {
         </el-menu>
       </el-header>
       <el-main>
-        <el-row :gutter="20" justify="center">
+        <el-row :gutter="20" justify="start">
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
           <el-col :span="12" :sm="6">
-            <div class="grid-content ep-bg-purple">aaaaa</div>
+            <div class="grid-content">
+              <el-avatar :size="80" :icon="UserFilled" />
+            </div>
           </el-col>
         </el-row>
       </el-main>
@@ -101,5 +113,9 @@ export default {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.grid-content {
+  text-align: center;
+  padding-bottom: 20px;
 }
 </style>
