@@ -34,7 +34,28 @@ import {
           </el-menu-item>
         </el-menu>
       </el-header>
-      <el-main> </el-main>
+      <el-main>
+        <el-row :gutter="20" justify="center">
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+          <el-col :span="12" :sm="6">
+            <div class="grid-content ep-bg-purple">aaaaa</div>
+          </el-col>
+        </el-row>
+      </el-main>
     </el-container>
   </div>
 </template>
@@ -66,5 +87,19 @@ export default {
 .avator-name {
   margin-left: 5px;
   font-size: var(--el-menu-item-font-size);
+}
+.el-row {
+  margin-bottom: 20px;
+}
+.el-row:last-child {
+  margin-bottom: 0;
+}
+.el-col {
+  border-radius: 4px;
+}
+
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
 }
 </style>
