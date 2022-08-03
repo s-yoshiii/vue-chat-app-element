@@ -9,8 +9,8 @@ import {
 </script>
 <template>
   <div class="container">
+    <Header />
     <el-container>
-      <Header />
       <el-main>
         <el-row :gutter="20" justify="start">
           <el-col :span="12" :sm="6">
@@ -60,24 +60,8 @@ export default {
 };
 </script>
 <style scoped>
-.flex-grow {
-  flex-grow: 1;
-}
-.el-menu--horizontal {
-  align-items: center;
-}
 .el-container {
   min-height: 100vh;
-}
-
-.el-row {
-  margin-bottom: 20px;
-}
-.el-row:last-child {
-  margin-bottom: 0;
-}
-.el-col {
-  border-radius: 4px;
 }
 
 .grid-content {

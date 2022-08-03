@@ -3,12 +3,16 @@
     <el-menu mode="horizontal" :ellipsis="false">
       <el-menu-item index="0">LOGO</el-menu-item>
       <div class="flex-grow" />
-      <div class="avator-area">
+      <!-- <div class="avator-area">
         <el-row align="middle">
           <el-avatar class="avator-image" :icon="UserFilled" />
           <div class="avator-name">AvavtorName</div>
         </el-row>
-      </div>
+      </div> -->
+      <el-menu-item>
+        <el-icon><UserFilled /></el-icon>
+        Name
+      </el-menu-item>
       <el-menu-item>
         <el-icon><HomeFilled /></el-icon>
         Home
@@ -40,14 +44,26 @@ export default {};
 </script>
 
 <style>
+.flex-grow {
+  flex-grow: 1;
+}
+.el-menu--horizontal {
+  align-items: center;
+}
 .avator-area {
   padding: 0 var(--el-menu-base-level-padding);
-}
-.avator-image > .el-icon {
-  margin-left: 5px;
 }
 .avator-name {
   margin-left: 5px;
   font-size: var(--el-menu-item-font-size);
+}
+.el-row {
+  margin-bottom: 20px;
+}
+.el-row:last-child {
+  margin-bottom: 0;
+}
+.el-col {
+  border-radius: 4px;
 }
 </style>
