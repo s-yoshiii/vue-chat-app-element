@@ -3,12 +3,6 @@
     <el-menu mode="horizontal" :ellipsis="false">
       <el-menu-item index="0">LOGO</el-menu-item>
       <div class="flex-grow" />
-      <!-- <div class="avator-area">
-        <el-row align="middle">
-          <el-avatar class="avator-image" :icon="UserFilled" />
-          <div class="avator-name">AvavtorName</div>
-        </el-row>
-      </div> -->
       <el-menu-item>
         <el-icon><UserFilled /></el-icon>
         Name
@@ -21,10 +15,12 @@
         <el-icon><Setting /></el-icon>
         Setting
       </el-menu-item>
-      <el-menu-item>
-        <el-icon><Right /></el-icon>
-        Logout
-      </el-menu-item>
+      <router-link to="/login">
+        <el-menu-item>
+          <el-icon><Right /></el-icon>
+          Logout
+        </el-menu-item>
+      </router-link>
     </el-menu>
   </el-header>
 </template>

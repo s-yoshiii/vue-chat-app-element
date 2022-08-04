@@ -13,35 +13,12 @@ import {
     <el-container>
       <el-main>
         <el-row :gutter="20" justify="start">
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
-          </el-col>
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
-          </el-col>
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
-          </el-col>
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
-          </el-col>
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
-          </el-col>
-          <el-col :span="12" :sm="6">
-            <div class="grid-content">
-              <el-avatar :size="80" :icon="UserFilled" />
-            </div>
+          <el-col :span="12" :sm="6" v-for="n in 24" :key="n">
+            <router-link :to="{ path: '/chat', query: { user_id: n } }">
+              <div class="grid-content">
+                <el-avatar :size="80" :icon="UserFilled" />
+              </div>
+            </router-link>
           </el-col>
         </el-row>
       </el-main>
