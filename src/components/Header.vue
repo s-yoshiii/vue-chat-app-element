@@ -1,7 +1,9 @@
 <template>
   <el-header>
     <el-menu mode="horizontal" :ellipsis="false">
-      <el-menu-item index="0">LOGO</el-menu-item>
+      <router-link to="/">
+        <el-menu-item>LOGO</el-menu-item>
+      </router-link>
       <div class="flex-grow" />
       <el-menu-item>
         <el-icon><UserFilled /></el-icon>

@@ -1,12 +1,3 @@
-<script setup>
-import {
-  HomeFilled,
-  Right,
-  ArrowDown,
-  UserFilled,
-  Setting,
-} from "@element-plus/icons-vue";
-</script>
 <template>
   <div class="container">
     <Header />
