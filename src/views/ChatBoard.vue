@@ -1,12 +1,26 @@
+<script setup>
+import { h, ref } from "vue";
+import { UserFilled } from "@element-plus/icons-vue";
+import { ElDivider } from "element-plus";
+const size = ref(10);
+const spacer = h(ElDivider, { direction: "vertical" });
+</script>
 <template>
   <div class="container">
     <Header />
     <el-container>
       <el-main>
-        <el-space :fill="fill" wrap direction="vertical">
-          <el-card class="box-card">list Item </el-card>
-          <el-card class="box-card">list Item </el-card>
-          <el-card class="box-card">list Item </el-card>
+        <el-space fill wrap style="width: 100%" direction="vertical">
+          <el-card class="box-card" style="widht: 100%">
+            <el-space :size="size" :spacer="spacer">
+              <div>
+                <el-avatar :size="50" :icon="UserFilled" />
+              </div>
+              <div>
+                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+              </div>
+            </el-space>
+          </el-card>
         </el-space>
       </el-main>
     </el-container>
@@ -27,4 +41,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.el-space__item {
+  word-break: break-all;
+}
+</style>
