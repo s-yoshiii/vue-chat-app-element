@@ -10,23 +10,36 @@ const spacer = h(ElDivider, { direction: "vertical" });
     <Header />
     <el-container>
       <el-main>
-        <el-space fill wrap style="width: 100%" direction="vertical">
-          <el-card class="box-card" style="widht: 100%">
-            <el-space :size="size" :spacer="spacer">
-              <div>
-                <el-avatar :size="50" :icon="UserFilled" />
-              </div>
-              <div>
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-              </div>
-            </el-space>
-          </el-card>
+        <el-space direction="horizon" v-for="n in 12" :key="n">
+          <el-space fill wrap style="width: 100%" direction="vertical">
+            <el-card class="box-card" style="widht: 100%">
+              <el-space :size="size" :spacer="spacer">
+                <div>
+                  <el-avatar :size="50" :icon="UserFilled" />
+                </div>
+                <div class="chat-message">
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </div>
+              </el-space>
+            </el-card>
+          </el-space>
         </el-space>
+        <el-form>
+          <el-form-item>
+            <el-input
+              v-model="textarea"
+              :rows="2"
+              type="textarea"
+              placeholder="Please input"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary">Submit</el-button>
+          </el-form-item>
+        </el-form>
       </el-main>
     </el-container>
   </div>
-
-  ChatBoard
 </template>
 
 <script>
@@ -44,5 +57,10 @@ export default {
 <style>
 .el-space__item {
   word-break: break-all;
+}
+@media screen and (max-width: 767px) {
+  .chat-message {
+    font-size: 12px;
+  }
 }
 </style>

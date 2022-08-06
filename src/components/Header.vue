@@ -6,23 +6,29 @@
       </router-link>
       <div class="flex-grow" />
       <el-menu-item>
-        <el-icon><UserFilled /></el-icon>
-        Name
+        <router-link to="/mypage">
+          <el-icon><UserFilled /></el-icon>
+          <span class="item-name">Name</span>
+        </router-link>
       </el-menu-item>
       <el-menu-item>
-        <el-icon><HomeFilled /></el-icon>
-        Home
+        <router-link to="/">
+          <el-icon><HomeFilled /></el-icon>
+          <span class="item-name">Home</span>
+        </router-link>
       </el-menu-item>
       <el-menu-item>
-        <el-icon><Setting /></el-icon>
-        Setting
+        <router-link to="/setting">
+          <el-icon><Setting /></el-icon>
+          <span class="item-name">Setting</span>
+        </router-link>
       </el-menu-item>
-      <router-link to="/login">
-        <el-menu-item>
+      <el-menu-item>
+        <router-link to="/login">
           <el-icon><Right /></el-icon>
-          Logout
-        </el-menu-item>
-      </router-link>
+          <span class="item-name">Logout</span>
+        </router-link>
+      </el-menu-item>
     </el-menu>
   </el-header>
 </template>
@@ -48,6 +54,11 @@ export default {};
 .el-menu--horizontal {
   align-items: center;
 }
+.el-menu--horizontal > .el-menu-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .avator-area {
   padding: 0 var(--el-menu-base-level-padding);
 }
@@ -63,5 +74,18 @@ export default {};
 }
 .el-col {
   border-radius: 4px;
+}
+@media screen and (max-width: 767px) {
+  .el-menu--horizontal > .el-menu-item a {
+    flex-direction: column;
+  }
+  .el-menu--horizontal > .el-menu-item a .el-icon {
+    margin-right: 0;
+    height: 23px;
+  }
+  .item-name {
+    line-height: 1.8;
+    font-size: 10px;
+  }
 }
 </style>
