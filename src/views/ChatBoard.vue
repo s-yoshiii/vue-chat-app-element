@@ -1,10 +1,11 @@
 <script setup>
-import { h, ref } from "vue";
-import { UserFilled } from "@element-plus/icons-vue";
-import { ElDivider } from "element-plus";
+import { defineComponent, h, ref } from "vue";
+
 const size = ref(10);
+const body = ref("");
 const spacer = h(ElDivider, { direction: "vertical" });
 </script>
+
 <template>
   <div class="container">
     <Header />
@@ -27,7 +28,8 @@ const spacer = h(ElDivider, { direction: "vertical" });
         <el-form>
           <el-form-item>
             <el-input
-              v-model="body"
+              :modelValue="body"
+              @update:modelValue="body = $event"
               :autosize="{ minRows: 2, maxRows: 4 }"
               type="textarea"
               placeholder="Please input"
@@ -37,18 +39,16 @@ const spacer = h(ElDivider, { direction: "vertical" });
             <el-button type="primary" :disabled="invalid" @click="submit"
               >Submit</el-button
             >
-            <el-button type="submit" @click="clear">Clear</el-button>
+            <el-button>Clear</el-button>
           </el-form-item>
         </el-form>
       </el-main>
     </el-container>
   </div>
 </template>
-
 <script>
-import { ref } from "vue";
-const body = ref("");
-export default {
+import { UserFilled } from "@element-plus/icons-vue";
+export default defineComponent({
   created() {
     this.user_id = this.$route.query.user_id;
     console.log("user_id", this.user_id);
@@ -56,7 +56,13 @@ export default {
   data: () => {
     body: "";
     user_id: "";
-    invalid: false;
+    // invalid: false;
+  },
+  computed: {
+    invalid() {
+      console.log("invalid called");
+      return false;
+    },
   },
   methods: {
     clear() {
@@ -66,9 +72,8 @@ export default {
       console.log("submit called", this.body);
     },
   },
-};
+});
 </script>
-
 <style>
 .el-space__item {
   word-break: break-all;
