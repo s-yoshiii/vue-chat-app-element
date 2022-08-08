@@ -27,14 +27,17 @@ const spacer = h(ElDivider, { direction: "vertical" });
         <el-form>
           <el-form-item>
             <el-input
-              v-model="textarea"
-              :rows="2"
+              v-model="body"
+              :autosize="{ minRows: 2, maxRows: 4 }"
               type="textarea"
               placeholder="Please input"
             />
           </el-form-item>
           <el-form-item>
-            <el-button type="primary">Submit</el-button>
+            <el-button type="primary" :disabled="invalid" @click="submit"
+              >Submit</el-button
+            >
+            <el-button type="submit" @click="clear">Clear</el-button>
           </el-form-item>
         </el-form>
       </el-main>
@@ -43,13 +46,25 @@ const spacer = h(ElDivider, { direction: "vertical" });
 </template>
 
 <script>
+import { ref } from "vue";
+const body = ref("");
 export default {
   created() {
     this.user_id = this.$route.query.user_id;
     console.log("user_id", this.user_id);
   },
   data: () => {
+    body: "";
     user_id: "";
+    invalid: false;
+  },
+  methods: {
+    clear() {
+      console.log("clear called");
+    },
+    submit() {
+      console.log("submit called", this.body);
+    },
   },
 };
 </script>
