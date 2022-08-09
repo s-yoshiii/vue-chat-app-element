@@ -1,35 +1,69 @@
 <script setup>
-import { h, onMounted, ref } from "vue";
+import { computed, h, ref } from "vue";
 import { useRoute } from "vue-router";
 import { UserFilled } from "@element-plus/icons-vue";
 const size = ref(10);
 const body = ref("");
 let user_id = ref("");
+const messages = ref([
+  {
+    message: "message01",
+  },
+  {
+    message: "message02",
+  },
+  {
+    message: "message03",
+  },
+  {
+    message: "message04",
+  },
+  {
+    message: "message05",
+  },
+]);
 const route = useRoute();
 const spacer = h(ElDivider, { direction: "vertical" });
 user_id = route.query.user_id;
 console.log(user_id);
-onMounted(() => {});
-</script>
 
+const clear = () => {
+  console.log("clear called");
+};
+const submit = () => {
+  console.log("submit called", body.value);
+  messages.value.unshift({ message: body.value });
+  body.value = "";
+};
+const invalid = computed(() => {
+  console.log("isInvalid callded");
+  if (!body.value) {
+    return true;
+  }
+  return false;
+});
+</script>
 <template>
   <div class="container">
     <Header />
     <el-container>
       <el-main>
-        <el-space direction="horizon" v-for="n in 12" :key="n">
-          <el-space fill wrap style="width: 100%" direction="vertical">
-            <el-card class="box-card" style="widht: 100%">
-              <el-space :size="size" :spacer="spacer">
-                <div>
-                  <el-avatar :size="50" :icon="UserFilled" />
-                </div>
-                <div class="chat-message">
-                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </div>
-              </el-space>
-            </el-card>
-          </el-space>
+        <el-space
+          direction="horizon"
+          v-for="(data, index) in messages"
+          :key="index"
+          class="box-card-wrap"
+        >
+          <el-card class="box-card">
+            <el-space :size="size" :spacer="spacer" class="aaa">
+              <div>
+                <el-avatar :size="50" :icon="UserFilled" />
+              </div>
+              <div class="chat-message">
+                {{ data.message }}
+              </div>
+            </el-space>
+          </el-card>
         </el-space>
         <el-form>
           <el-form-item>
@@ -44,43 +78,19 @@ onMounted(() => {});
             <el-button type="primary" :disabled="invalid" @click="submit"
               >Submit</el-button
             >
-            <el-button>Clear</el-button>
+            <el-button @click="clear">Clear</el-button>
           </el-form-item>
         </el-form>
       </el-main>
     </el-container>
   </div>
 </template>
-<script>
-// export default {
-//   created() {
-//     this.user_id = this.$route.query.user_id;
-//     console.log("user_id", this.user_id);
-//   },
-//   data: () => {
-//     body: "";
-//     user_id: "";
-//     // invalid: false;
-//   },
-//   computed: {
-//     invalid() {
-//       console.log("invalid called");
-//       return false;
-//     },
-//   },
-//   methods: {
-//     clear() {
-//       console.log("clear called");
-//     },
-//     submit() {
-//       console.log("submit called", this.body);
-//     },
-//   },
-// };
-</script>
 <style>
-.el-space__item {
-  word-break: break-all;
+.box-card-wrap > .el-space__item {
+  width: 100%;
+}
+.el-space {
+  display: flex;
 }
 @media screen and (max-width: 767px) {
   .chat-message {
