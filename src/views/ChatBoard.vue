@@ -1,9 +1,15 @@
 <script setup>
-import { defineComponent, h, ref } from "vue";
-
+import { h, onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { UserFilled } from "@element-plus/icons-vue";
 const size = ref(10);
 const body = ref("");
+let user_id = ref("");
+const route = useRoute();
 const spacer = h(ElDivider, { direction: "vertical" });
+user_id = route.query.user_id;
+console.log(user_id);
+onMounted(() => {});
 </script>
 
 <template>
@@ -28,8 +34,7 @@ const spacer = h(ElDivider, { direction: "vertical" });
         <el-form>
           <el-form-item>
             <el-input
-              :modelValue="body"
-              @update:modelValue="body = $event"
+              v-model="body"
               :autosize="{ minRows: 2, maxRows: 4 }"
               type="textarea"
               placeholder="Please input"
@@ -47,32 +52,31 @@ const spacer = h(ElDivider, { direction: "vertical" });
   </div>
 </template>
 <script>
-import { UserFilled } from "@element-plus/icons-vue";
-export default defineComponent({
-  created() {
-    this.user_id = this.$route.query.user_id;
-    console.log("user_id", this.user_id);
-  },
-  data: () => {
-    body: "";
-    user_id: "";
-    // invalid: false;
-  },
-  computed: {
-    invalid() {
-      console.log("invalid called");
-      return false;
-    },
-  },
-  methods: {
-    clear() {
-      console.log("clear called");
-    },
-    submit() {
-      console.log("submit called", this.body);
-    },
-  },
-});
+// export default {
+//   created() {
+//     this.user_id = this.$route.query.user_id;
+//     console.log("user_id", this.user_id);
+//   },
+//   data: () => {
+//     body: "";
+//     user_id: "";
+//     // invalid: false;
+//   },
+//   computed: {
+//     invalid() {
+//       console.log("invalid called");
+//       return false;
+//     },
+//   },
+//   methods: {
+//     clear() {
+//       console.log("clear called");
+//     },
+//     submit() {
+//       console.log("submit called", this.body);
+//     },
+//   },
+// };
 </script>
 <style>
 .el-space__item {
