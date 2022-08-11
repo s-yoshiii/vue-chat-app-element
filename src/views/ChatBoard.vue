@@ -1,31 +1,17 @@
 <script setup>
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+
+import { db } from "@/firebase/firebase";
 import { computed, h, ref } from "vue";
 import { useRoute } from "vue-router";
 import { UserFilled } from "@element-plus/icons-vue";
 const size = ref(10);
 const body = ref("");
 let user_id = ref("");
-const messages = ref([
-  {
-    message: "message01",
-  },
-  {
-    message: "message02",
-  },
-  {
-    message: "message03",
-  },
-  {
-    message: "message04",
-  },
-  {
-    message: "message05",
-  },
-]);
+const messages = ref([]);
 const route = useRoute();
 const spacer = h(ElDivider, { direction: "vertical" });
 user_id = route.query.user_id;
-console.log(user_id);
 
 const clear = () => {
   console.log("clear called");
@@ -41,6 +27,15 @@ const invalid = computed(() => {
     return true;
   }
   return false;
+});
+// firebase データ取得
+const chatRef = collection(db, "chats");
+const chatSnapshot = getDocs(chatRef);
+chatSnapshot.then((data) => {
+  data.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+    messages.value.push(doc.data());
+  });
 });
 </script>
 <template>
