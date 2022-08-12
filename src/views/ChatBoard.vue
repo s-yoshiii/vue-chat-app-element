@@ -1,16 +1,16 @@
 <script setup>
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { UserFilled } from "@element-plus/icons-vue";
 
 import { db } from "@/firebase/firebase";
 import { computed, h, ref } from "vue";
 import { useRoute } from "vue-router";
-import { UserFilled } from "@element-plus/icons-vue";
+const spacer = h(ElDivider, { direction: "vertical" });
 const size = ref(10);
 const body = ref("");
 let user_id = ref("");
 const messages = ref([]);
 const route = useRoute();
-const spacer = h(ElDivider, { direction: "vertical" });
 user_id = route.query.user_id;
 
 const clear = () => {
@@ -50,7 +50,7 @@ chatSnapshot.then((data) => {
           class="box-card-wrap"
         >
           <el-card class="box-card">
-            <el-space :size="size" :spacer="spacer" class="aaa">
+            <el-space :size="size" :spacer="spacer">
               <div>
                 <el-avatar :size="50" :icon="UserFilled" />
               </div>

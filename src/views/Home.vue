@@ -1,3 +1,13 @@
+<script setup>
+import { ref } from "vue";
+import { UserFilled } from "@element-plus/icons-vue";
+import Header from "@/components/Header.vue";
+</script>
+<script>
+export default {
+  name: "Home",
+};
+</script>
 <template>
   <div class="container">
     <Header />
@@ -17,16 +27,6 @@
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
-import Header from "@/components/Header.vue";
-export default {
-  name: "Home",
-  components: {
-    Header,
-  },
-};
-</script>
 <style scoped>
 .el-container {
   min-height: 100vh;
