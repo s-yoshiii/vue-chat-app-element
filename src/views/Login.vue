@@ -7,6 +7,7 @@ const form = reactive({
   mail: "",
   password: "",
 });
+// バリデーション関数
 
 const onSubmit = () => {
   console.log("submit!");
@@ -31,19 +32,20 @@ export default {
       </el-header>
       <el-main>
         <el-card class="box-card" shadow="hover">
+          <h1 class="form-title">Sing Up</h1>
           <el-form :model="form" label-width="120px">
             <el-form-item label="Name">
               <el-input v-model="form.name" />
             </el-form-item>
             <el-form-item label="E-mail">
-              <el-input v-model="form.mail" />
+              <el-input v-model="form.mail" type="email" />
             </el-form-item>
             <el-form-item label="Password">
-              <el-input v-model="form.password" />
+              <el-input v-model="form.password" type="password" />
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="onSubmit">Create</el-button>
-              <el-button>Cancel</el-button>
+              <el-button type="primary" @click="onSubmit">Login</el-button>
+              <el-button>Clear</el-button>
             </el-form-item>
           </el-form>
         </el-card>
@@ -51,3 +53,14 @@ export default {
     </el-container>
   </div>
 </template>
+<style>
+.box-card {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+</style>
