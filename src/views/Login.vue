@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { object, string } from "yup";
 // do not use same name with ref
 const form = reactive({
@@ -13,6 +13,15 @@ const errorMsg = reactive({
   mail: "",
   password: "",
 });
+const valid = ref(true);
+const email = ref("");
+const emailRules = (v) => [
+  (v) => !!v || "メールアドレスを入力して下さい",
+  (v) => /.+@.+\..+/.test(v) || "メールアドレスが不正です",
+];
+const validate = (v) => {
+  console.log(v);
+};
 
 // バリデーション関数
 const emailRegExp = /.+@.+\..+/;
@@ -32,8 +41,10 @@ const inputSchema = object().shape({
     .min(10, "10文字以上のパスワードを入力してください。"),
 });
 
+const nameRules = (v) => !!v || "必ず入力してください";
+
 // バリデーション処理
-const valid = (field) => {
+const validation = (field) => {
   inputSchema
     .validateAt(field, form)
     .then(() => {
@@ -45,8 +56,7 @@ const valid = (field) => {
 };
 
 const isValid = computed(() => {
-  console.log("isValid", isValid.value);
-  return isValid.value;
+  return !isValid.value;
 });
 
 // submit
@@ -76,16 +86,22 @@ export default {
           <h1 class="form-title">Sing Up</h1>
           <el-form :model="form" label-width="120px">
             <el-form-item label="Name">
-              <el-input v-model="form.name" @blur="valid('name')" />
+              <el-input
+                v-model="form.name"
+                @blur="validation('name')"
+                :rules="[nameRules]"
+              />
               <p v-if="!!errorMsg.name">
                 {{ errorMsg.name }}
               </p>
             </el-form-item>
             <el-form-item label="E-mail">
               <el-input
-                v-model="form.mail"
+                v-model="email"
+                :rules="emailRules"
+                @blur="validate()"
                 type="email"
-                @blur="valid('mail')"
+                required
               />
               <p v-if="!!errorMsg.mail">
                 {{ errorMsg.mail }}
@@ -95,7 +111,7 @@ export default {
               <el-input
                 v-model="form.password"
                 type="password"
-                @blur="valid('password')"
+                @blur="validation('password')"
               />
 
               <p v-if="!!errorMsg.password">
@@ -107,6 +123,7 @@ export default {
                 >Login</el-button
               >
               <el-button>Clear</el-button>
+              {{ isValid }}
             </el-form-item>
           </el-form>
         </el-card>
