@@ -16,14 +16,22 @@ const errorMsg = reactive({
 const valid = ref(true);
 const email = ref("");
 const emailRegExp = /.+@.+\..+/;
-const requirRules = (v) => !!v || "メールアドレスを入力して下さい";
-const emailRules = [
-  (v) => !!v || "メールアドレスを入力して下さい",
-  (v) => /.+@.+\..+/.test(v) || "メールアドレスが不正です",
-];
+const emailRules = (v) => {
+  if (!!v || v.length === 0) {
+    return "メールアドレスを入力して下さい";
+  } else if (emailRegExp.test(v)) {
+    return "メールアドレスが不正です";
+  } else {
+    return false;
+  }
+};
+// const emailRules = [
+//   (v) => !!v || "メールアドレスを入力して下さい",
+//   (v) => /.+@.+\..+/.test(v) || "メールアドレスが不正です",
+// ];
 const validate = (v) => {
   console.log("validated");
-  console.log(emailRules);
+  console.log(emailRules(email.value));
   // console.log(requirRules(email.value), "email");
   // console.log(emailformatRules(email.value), "email");
 };
