@@ -15,16 +15,20 @@ const errorMsg = reactive({
 });
 const valid = ref(true);
 const email = ref("");
-const emailRules = (v) => [
+const emailRegExp = /.+@.+\..+/;
+const requirRules = (v) => !!v || "メールアドレスを入力して下さい";
+const emailRules = [
   (v) => !!v || "メールアドレスを入力して下さい",
   (v) => /.+@.+\..+/.test(v) || "メールアドレスが不正です",
 ];
 const validate = (v) => {
-  console.log(v);
+  console.log("validated");
+  console.log(emailRules);
+  // console.log(requirRules(email.value), "email");
+  // console.log(emailformatRules(email.value), "email");
 };
 
 // バリデーション関数
-const emailRegExp = /.+@.+\..+/;
 
 // 入力スキーマ
 const inputSchema = object().shape({
@@ -89,7 +93,7 @@ export default {
               <el-input
                 v-model="form.name"
                 @blur="validation('name')"
-                :rules="[nameRules]"
+                :rules="[requirRules, nameRules]"
               />
               <p v-if="!!errorMsg.name">
                 {{ errorMsg.name }}
@@ -99,7 +103,7 @@ export default {
               <el-input
                 v-model="email"
                 :rules="emailRules"
-                @blur="validate()"
+                @blur="validate"
                 type="email"
                 required
               />
